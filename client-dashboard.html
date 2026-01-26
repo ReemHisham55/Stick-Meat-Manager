@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+    <link rel="shortcut icon" href="images/about-steak-modified.png">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="dashboard-client.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="col-div-6">
+                <p class="logo"><span>Stick Meat </span>Client</p>
+            </div>
+            <div class="col-div-6">
+                <ul class="nav">
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper">
+        <div class="container">
+            <div class="order-container">
+                <h2 style="color: #060606; margin-bottom: 20px;">Place Your Customized Order</h2>
+
+                <form id="clientOrderForm">
+                    <div class="form-row">
+                        <div class="form-group col-50">
+                            <label>Meat Type</label>
+                            <select id="mType" required>
+                                <option value="Ribeye">Ribeye Steak</option>
+                                <option value="Wagyu">Wagyu Beef</option>
+                                <option value="Lamb">Lamb Chops</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-50">
+                            <label>Weight (Grams)</label>
+                            <input type="number" id="mWeight" placeholder="e.g. 500" required>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-50">
+                            <label>Pieces</label>
+                            <input type="number" id="mPieces" value="1" min="1">
+                        </div>
+                        <div class="form-group col-50">
+                            <label>Cooking Level</label>
+                            <select id="mLevel">
+                                <option>Rare</option>
+                                <option>Medium Rare</option>
+                                <option>Medium</option>
+                                <option>Well Done</option>
+                            </select>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Order Type</label>
+                        <select id="mOrderType" onchange="toggleClientDineIn()">
+                            <option value="takeaway">Takeaway</option>
+                            <option value="dinein">Dine-in</option>
+                        </select>
+                    </div>
+
+                    <div id="clientDineInFields" style="display:none;" class="dine-in-details">
+                        <div class="form-row">
+                            <div class="form-group col-50"><label>Time</label><input type="time" id="resTime"></div>
+                            <div class="form-group col-50"><label>Seats</label><input type="number" id="resSeats"
+                                    min="1"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Section</label>
+                            <select id="resSection">
+                                <option>Economy Section</option>
+                                <option>Luxury Section</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-order-btn">Submit My Order</button>
+                </form>
+
+                <div id="trackingSection" class="tracking-box" style="display: none;">
+                    <h3>Tracking Your Order: # 104</h3>
+                    <p id="orderSummary" style="margin: 10px 0; color: #666;"></p>
+
+                    <div class="status-bar">
+                        <div class="status-dot" id="step1"><span>1</span>
+                            <p>Pending</p>
+                        </div>
+                        <div class="status-dot" id="step2"><span>2</span>
+                            <p>Cooking</p>
+                        </div>
+                        <div class="status-dot" id="step3"><span>3</span>
+                            <p>Ready</p>
+                        </div>
+                    </div>
+                    <button onclick="localStorage.removeItem('activeOrder'); location.reload();" class="btn-outline"
+                        style="margin-top:20px; width:100%; cursor:pointer;">Cancel / New Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function toggleClientDineIn() {
+            const isDineIn = document.getElementById("mOrderType").value === "dinein";
+            document.getElementById("clientDineInFields").style.display = isDineIn ? "block" : "none";
+        }
+
+
+        function updateTrackingUI(orderData) {
+            if (!orderData) return;
+
+            document.getElementById('clientOrderForm').style.display = 'none';
+            document.getElementById('trackingSection').style.display = 'block';
+
+
+            document.getElementById('orderSummary').innerText =
+                `You ordered ${orderData.weight}g of ${orderData.meat}. Status: ${orderData.status}`;
+
+
+            const steps = { 'Pending': 1, 'Cooking': 2, 'Ready': 3 };
+            const currentLevel = steps[orderData.status] || 0;
+
+            document.querySelectorAll('.status-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index < currentLevel);
+            });
+        }
+
+
+        window.onload = () => {
+            const savedOrder = JSON.parse(localStorage.getItem('activeOrder'));
+            if (savedOrder) updateTrackingUI(savedOrder);
+        };
+
+
+        document.getElementById('clientOrderForm').onsubmit = function (e) {
+            e.preventDefault();
+            const orderData = {
+                meat: document.getElementById('mType').value,
+                weight: document.getElementById('mWeight').value,
+                level: document.getElementById('mLevel').value,
+                status: 'Pending'
+            };
+            localStorage.setItem('activeOrder', JSON.stringify(orderData));
+            updateTrackingUI(orderData);
+            alert("Order Sent to Kitchen!");
+        };
+        window.addEventListener('storage', () => {
+            const updatedOrder = JSON.parse(localStorage.getItem('activeOrder'));
+            if (updatedOrder) updateTrackingUI(updatedOrder);
+        });
+    </script>
+</body>
+
+</html>

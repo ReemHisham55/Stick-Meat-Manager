@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stick Meat System</title>
+    <link rel="shortcut icon" href="images/about-steak-modified.png">
+    <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="col-div-6">
+                <p class="logo"><span>Stick Meat </span>System</p>
+            </div>
+            <div class="col-div-6">
+                <ul class="nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#our-menu">Menu</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><button class="signin-btn" onclick="openAuthModal()">Sign In</button></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Design Your Perfect <span class="highlight">Meal</span></h1>
+                <p>The Stick Meat System gives you full control: select weight, meat type, cooking level, and your
+                    preferred dining section.</p>
+                <div class="hero-btns">
+                    <a href="#our-menu" class="btn-main">Order Now</a>
+                    <a href="#our-menu" class="btn-outline">Track Order</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/33.png" alt="Steak Image">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+
+    <section class="meals-section" id="our-menu">
+        <div class="container">
+            <h2 class="section-title">Our Available Meals</h2>
+            <p class="section-subtitle">Choose a base and customize your weight, cooking level, and dining preference.
+            </p>
+
+            <div class="meals-grid">
+                <div class="meal-card">
+                    <div class="meal-img">
+                        <img src="images/Ribeye Steak.png" alt="Ribeye Steak">
+                        <span class="tag">Premium</span>
+                    </div>
+                    <div class="meal-info">
+                        <h3>Classic Ribeye Steak</h3>
+                        <p>Customize your meat type and exact weight for the perfect meal.</p>
+                        <button class="order-btn" onclick="openModal()">Order</button>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-img">
+                        <img src="images/Lamb Chops.png" alt="Lamb Chops">
+                        <span class="tag">Best Seller</span>
+                    </div>
+                    <div class="meal-info">
+                        <h3>Oriental Lamb Chops</h3>
+                        <p>Choose the number of pieces and your preferred dining section.</p>
+                        <button class="order-btn" onclick="openModal()">Order</button>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-img">
+                        <img src="images/Beef Wagyu.png" alt="Beef Wagyu">
+                        <span class="tag">Exclusive</span>
+                    </div>
+                    <div class="meal-info">
+                        <h3>Wagyu Beef Strips</h3>
+                        <p>Premium beef strips tailored to your exact cooking requirements.</p>
+                        <button class="order-btn" onclick="openModal()">Order</button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="meal-card">
+                    <div class="meal-img">
+                        <img src="images/T-Bone Steak.png" alt="T-Bone Steak">
+                        <span class="tag">Chef's Choice</span>
+                    </div>
+                    <div class="meal-info">
+                        <h3>Giant T-Bone Steak</h3>
+                        <p>A massive cut for serious meat lovers. Choose your preferred thickness and weight.</p>
+                        <button class="order-btn" onclick="openModal()">Order</button>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-img">
+                        <img src="images/Beef Tenderloin.png" alt="Beef Tenderloin">
+                        <span class="tag">Lean & Soft</span>
+                    </div>
+                    <div class="meal-info">
+                        <h3>Beef Tenderloin Medallions</h3>
+                        <p>The most tender cut of beef, customized by number of pieces and cooking level.</p>
+                        <button class="order-btn" onclick="openModal()">Order</button>
+                    </div>
+                </div>
+
+                <div class="meal-card">
+                    <div class="meal-img">
+                        <img src="images/Mix Grill.png" alt="Mix Grill">
+                        <span class="tag">Family Size</span>
+                    </div>
+                    <div class="meal-info">
+                        <h3>Premium Mix Grill</h3>
+                        <p>A variety of meats. Ideal for Dine-in orders in our Luxury section.</p>
+                        <button class="order-btn" onclick="openModal()">Order</button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="text-align:center; margin-bottom:20px;">Customize Your Meal</h2>
+            <form id="customizeForm">
+                <div class="form-row">
+                    <div class="form-group col-50">
+                        <label>Meal Weight (Grams)</label>
+                        <input type="number" placeholder="500" required>
+                    </div>
+                    <div class="form-group col-50">
+                        <label>Meat Pieces</label>
+                        <input type="number" min="1" value="1">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <label>Cooking Level</label>
+                    <select>
+                        <option>Rare</option>
+                        <option>Medium Rare</option>
+                        <option>Medium</option>
+                        <option>Well Done</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Order Type</label>
+                    <select id="orderType" onchange="toggleDineIn()">
+                        <option value="takeaway">Takeaway</option>
+                        <option value="dinein">Dine-in</option>
+                    </select>
+                </div>
+                <div id="dineInFields" class="dine-in-details" style="display:none;">
+                    <div class="form-row">
+                        <div class="form-group col-50">
+                            <label>Reservation Time</label>
+                            <input type="time">
+                        </div>
+                        <div class="form-group col-50">
+                            <label>Number of Seats</label>
+                            <input type="number" min="1">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <label>Dining Section</label>
+                            <select>
+                                <option>Economy Section</option>
+                                <option>Luxury Section</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="submit-order-btn">Submit Customized Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content" style="width: 400px;">
+            <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+            <div class="auth-tabs" style="display: flex; margin-bottom: 20px; border-bottom: 1px solid #eee;">
+                <button id="loginTab" class="tab-btn active" onclick="toggleAuth('login')"
+                    style="flex:1; padding:10px; cursor:pointer;">Login</button>
+                <button id="registerTab" class="tab-btn" onclick="toggleAuth('register')"
+                    style="flex:1; padding:10px; cursor:pointer;">Register</button>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group"><label>Email</label><input type="email" placeholder="Reem@gmail.com" required>
+                </div>
+                <div class="form-group"><label>Password</label><input type="password" placeholder="........" required>
+                </div>
+                <button type="submit" class="submit-order-btn">Sign In</button>
+            </form>
+
+            <form id="registerForm" style="display: none;">
+                <div class="form-group"><label>Full Name</label><input type="text" required></div>
+                <div class="form-group"><label>Email</label><input type="email" required></div>
+                <div class="form-group"><label>Create Password</label><input type="password" required></div>
+                <button type="submit" class="submit-order-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="col-div-6 about-img">
+                <img src="images/about-steak.png" alt="Our Quality Meat">
+            </div>
+            <div class="col-div-6 about-content">
+                <h2 class="section-title" style="text-align: left;">Why Choose <span>Stick Meat?</span></h2>
+                <p>We revolutionised the dining experience by giving <strong>you</strong> the control. No more standard
+                    portions – you choose the exact weight, the cut of meat, and the precision of the grill.</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <h3>100%</h3>
+                        <p>Premium Beef</p>
+                    </div>
+                    <div class="feature">
+                        <h3>24/7</h3>
+                        <p>Order Tracking</p>
+                    </div>
+                    <div class="feature">
+                        <h3 style="color: #a93226; font-size: 1.5rem;">5/5</h3>
+                        <p>Dining Luxury</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <a href="#our-menu" class="btn-main">Explore Our Cuts</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+
+    <section class="contact-modern" id="contact">
+        <div class="contact-overlay">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info-cards">
+                        <div class="info-card-glass">
+                            <h3>Our Location</h3>
+                            <p>123 Steakhouse St, Cairo, Egypt</p>
+                        </div>
+                        <div class="info-card-glass">
+                            <h3>Call Us</h3>
+                            <p>+20 153 426 1880</p>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form id="contactForm">
+                            <h3 style="margin-bottom: 20px; color:#a93226;">Send a Message</h3>
+                            <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+                            <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+                            <div class="form-group"><textarea placeholder="Your Message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-order-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="logo" style="color: white;"><span>Stick Meat</span> System</p>
+                    <p class="footer-desc">Experience the ultimate control over your meal. From the butcher's knife to
+                        your table, we ensure perfection in every cut.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#our-menu">Our Menu</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul class="footer-links">
+                        <li>Monday - Friday: 12:00 PM - 12:00 AM</li>
+                        <li>Saturday - Sunday: 10:00 AM - 02:00 AM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Stick Meat System By Reem Hisham. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+
+        const modal = document.getElementById("orderModal");
+        const authModal = document.getElementById("authModal");
+        const customizeForm = document.getElementById("customizeForm");
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+
+        // Admin
+        const ADMIN_EMAIL = "admin@meat.com";
+        const ADMIN_PASS = "admin123";
+
+        const openModal = () => modal.style.display = "block";
+        const closeModal = () => modal.style.display = "none";
+        const openAuthModal = () => authModal.style.display = "block";
+        const closeAuthModal = () => authModal.style.display = "none";
+
+        function toggleDineIn() {
+            const type = document.getElementById("orderType").value;
+            const dineInFields = document.getElementById("dineInFields");
+            dineInFields.style.display = (type === "dinein") ? "block" : "none";
+        }
+
+        function toggleAuth(type) {
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+
+            loginForm.style.display = (type === 'login') ? 'block' : 'none';
+            registerForm.style.display = (type === 'register') ? 'block' : 'none';
+
+            loginTab.classList.toggle('active', type === 'login');
+            registerTab.classList.toggle('active', type === 'register');
+        }
+
+        window.onclick = (event) => {
+            if (event.target === modal) closeModal();
+            if (event.target === authModal) closeAuthModal();
+        };
+
+
+        if (customizeForm) {
+            customizeForm.onsubmit = function (e) {
+                e.preventDefault();
+                const weight = this.querySelector('input[type="number"]').value;
+                const piecesInputs = this.querySelectorAll('input[type="number"]');
+                const pieces = piecesInputs.length > 1 ? piecesInputs[1].value : 1;
+                const level = this.querySelector('select').value;
+                const type = document.getElementById("orderType").value;
+
+                const orderData = {
+                    meat: "Custom Steak",
+                    weight: weight,
+                    pieces: pieces,
+                    level: level,
+                    orderType: type,
+                    status: 'Pending'
+                };
+
+                localStorage.setItem('activeOrder', JSON.stringify(orderData));
+                alert("Done! Your order has been customized.");
+                window.location.href = "client-dashboard.html";
+            };
+        }
+
+        if (loginForm) {
+            loginForm.onsubmit = function (e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                const pass = this.querySelector('input[type="password"]').value;
+
+                if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
+                    window.location.href = "admin-dashboard.html";
+                } else {
+                    window.location.href = "client-dashboard.html";
+                }
+            };
+        }
+
+        if (registerForm) {
+            registerForm.onsubmit = function (e) {
+                e.preventDefault();
+                alert("Account Created Successfully!");
+                window.location.href = "client-dashboard.html";
+            };
+        }
+    </script>
+</body>
+
+</html>

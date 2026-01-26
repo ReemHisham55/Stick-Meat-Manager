@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Stick Meat</title>
+    <link rel="shortcut icon" href="images/about-steak-modified.png">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="col-div-6">
+                <p class="logo"><span>Stick Meat </span>Admin</p>
+            </div>
+            <div class="col-div-6">
+                <ul class="nav">
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+
+    <div class="admin-wrapper">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 id="orderCount">0</h3>
+                    <p>Active Orders</p>
+                </div>
+                <div class="stat-item">
+                    <h3>12</h3>
+                    <p>Meals in Menu</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Staff Efficiency</p>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <h2>Live Customer Orders</h2>
+                <table id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Meal</th>
+                            <th>Weight</th>
+                            <th>Cooking Level</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrderList">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="admin-card">
+                <h2>Menu Inventory Control</h2>
+                <table id="menuTable">
+                    <tr>
+                        <td>Classic Ribeye Steak</td>
+                        <td><span style="color: green;">Available</span></td>
+                        <td><button class="status-btn btn-delete" onclick="removeMeal(this)">Remove Meal</button></td>
+                    </tr>
+                    <tr>
+                        <td>Beef Wagyu Strips</td>
+                        <td><span style="color: orange;">Low Stock</span></td>
+                        <td><button class="status-btn btn-delete" onclick="removeMeal(this)">Remove Meal</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function loadOrders() {
+            const order = JSON.parse(localStorage.getItem('activeOrder')); 
+            const tableBody = document.getElementById('adminOrderList');
+            const countDisplay = document.getElementById('orderCount');
+
+            if (order) {
+                countDisplay.innerText = "1";
+                tableBody.innerHTML = `
+                    <tr>
+                        <td>${order.meat}</td>
+                        <td>${order.weight}g</td>
+                        <td>${order.level}</td>
+                        <td><strong id="currentStatus" style="color: #a93226;">${order.status}</strong></td>
+                        <td>
+                            <button class="status-btn btn-cook" onclick="updateStatus('Cooking')">Start Cooking</button>
+                            <button class="status-btn btn-ready" onclick="updateStatus('Ready')">Set Ready</button>
+                            <button class="status-btn btn-delete" onclick="deleteOrder()">X</button>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tableBody.innerHTML = "<tr><td colspan='5' style='text-align:center;'>No active orders</td></tr>";
+                countDisplay.innerText = "0";
+            }
+        }
+
+
+        function updateStatus(newStatus) {
+            let order = JSON.parse(localStorage.getItem('activeOrder'));
+            if (order) {
+                order.status = newStatus;
+                localStorage.setItem('activeOrder', JSON.stringify(order)); 
+                loadOrders(); 
+            }
+        }
+
+
+        function deleteOrder() {
+            if (confirm("Are you sure you want to clear this order?")) {
+                localStorage.removeItem('activeOrder');
+                loadOrders();
+            }
+        }
+
+        function removeMeal(btn) {
+            if (confirm("Delete this meal from menu?")) {
+                var row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        }
+
+        setInterval(loadOrders, 1000);
+        window.onload = loadOrders;
+    </script>
+</body>
+
+</html>

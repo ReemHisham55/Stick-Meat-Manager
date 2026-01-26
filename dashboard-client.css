@@ -1,0 +1,52 @@
+.dashboard-wrapper {
+    padding: 50px 0;
+    background: #f9f9f9;
+    min-height: 80vh;
+}
+
+.order-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tracking-box {
+    display: none;
+    margin-top: 30px;
+    border-top: 2px solid #a93226;
+    padding-top: 20px;
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    position: relative; 
+}
+
+.status-dot {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.status-dot span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    line-height: 30px;
+    color: white;
+}
+
+.status-dot.active span {
+    background: #a93226;
+}
+
+.status-dot.active p {
+    color: #a93226;
+    font-weight: bold;
+}

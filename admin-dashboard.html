@@ -14,7 +14,9 @@
     <header>
         <div class="container">
             <div class="col-div-6">
-                <p class="logo"><span>Stick Meat </span>Admin</p>
+                <a href="index.html" style="text-decoration: none;">
+                    <p class="logo"><span>Stick Meat </span>System</p>
+                </a>
             </div>
             <div class="col-div-6">
                 <ul class="nav">
@@ -80,7 +82,7 @@
     <script>
 
         function loadOrders() {
-            const order = JSON.parse(localStorage.getItem('activeOrder')); 
+            const order = JSON.parse(localStorage.getItem('activeOrder'));
             const tableBody = document.getElementById('adminOrderList');
             const countDisplay = document.getElementById('orderCount');
 
@@ -110,8 +112,8 @@
             let order = JSON.parse(localStorage.getItem('activeOrder'));
             if (order) {
                 order.status = newStatus;
-                localStorage.setItem('activeOrder', JSON.stringify(order)); 
-                loadOrders(); 
+                localStorage.setItem('activeOrder', JSON.stringify(order));
+                loadOrders();
             }
         }
 

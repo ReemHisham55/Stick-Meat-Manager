@@ -24,9 +24,14 @@ html {
     float: left;
 }
 
-
 header {
     padding: 20px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -79,7 +84,6 @@ header {
     background: #060606;
 }
 
-
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -87,8 +91,8 @@ header {
     width: 30px;
     height: 21px;
     cursor: pointer;
-    float: right;
-    margin-top: 10px;
+    float: none;
+    margin-top: 0;
 }
 
 .menu-toggle .bar {
@@ -180,8 +184,6 @@ header {
     box-shadow: 15px 15px 0 #a93226;
 }
 
-
-
 .meals-section {
     padding: 80px 0;
     background: #fdfdfd;
@@ -269,7 +271,6 @@ header {
     background: #a93226;
 }
 
-
 .about-section {
     padding: 100px 0;
     background: #ffffff;
@@ -312,7 +313,7 @@ header {
 }
 
 .contact-modern {
-    background: url('images/Mix\ Grill.webp');
+    background: url('images/Mix Grill.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -368,7 +369,6 @@ header {
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
-
 
 .modal {
     display: none;
@@ -539,8 +539,6 @@ header {
     color: #666;
 }
 
-
-
 @media (max-width: 992px) {
     .col-div-6, 
     .hero-content, 
@@ -575,8 +573,17 @@ header {
         margin: 15% auto;
     }
 
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
     .menu-toggle {
         display: flex; 
+        float: none;
+        margin-top: 0;
     }
 
     .nav {

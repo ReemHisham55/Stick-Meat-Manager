@@ -12,16 +12,17 @@
 
 <body>
     <header>
-        <div class="container">
-            <div class="col-div-6">
-                <p class="logo"><span>Stick Meat </span>Client</p>
-            </div>
-            <div class="col-div-6">
-                <ul class="nav">
-                    <li><a href="index.html">Logout</a></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
+        <div class="col-div-6">
+            <a href="index.html" style="text-decoration: none;">
+                <p class="logo"><span>Stick Meat </span>System</p>
+            </a>
+        </div>
+        <div class="col-div-6">
+            <ul class="nav">
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
         </div>
     </header>
 
@@ -131,7 +132,7 @@
                 `You ordered ${orderData.weight}g of ${orderData.meat}. Status: ${orderData.status}`;
 
 
-            const steps = { 'Pending': 1, 'Cooking': 2, 'Ready': 3 };
+            const steps = {'Pending': 1, 'Cooking': 2, 'Ready': 3};
             const currentLevel = steps[orderData.status] || 0;
 
             document.querySelectorAll('.status-dot').forEach((dot, index) => {

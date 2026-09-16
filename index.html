@@ -10,23 +10,32 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="col-div-6">
-                <p class="logo"><span>Stick Meat </span>System</p>
+<header>
+    <div class="container">
+<div class="col-div-6">
+    <a href="index.html" style="text-decoration: none;">
+        <p class="logo"><span>Stick Meat </span>System</p>
+    </a>
+</div>
+        <div class="col-div-6">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-            <div class="col-div-6">
-                <ul class="nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#our-menu">Menu</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><button class="signin-btn" onclick="openAuthModal()">Sign In</button></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
+            <ul class="nav" id="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#our-menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="signin-btn" onclick="openAuthModal()">Sign In</button></li>
+            </ul>
         </div>
-    </header>
+        <div class="clearfix"></div>
+    </div>
+</header>
+
+
 
     <section class="hero">
         <div class="container">
@@ -389,6 +398,13 @@
                 window.location.href = "client-dashboard.html";
             };
         }
+        const mobileMenu = document.getElementById('mobile-menu');
+const navList = document.getElementById('nav-list');
+
+mobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    navList.classList.toggle('active');
+});
     </script>
 </body>
 
